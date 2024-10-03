@@ -4,22 +4,7 @@ import sympy
 
 import numpy
 
-r=2
-v=3
-k=0
-i=1
-z=0
-u=0
-j=0
-fo=0
-kz=0
-total=0
-
-holder_list = []
-
 list_of_lists = []
-
-t_tuple = ()
 
 lengthhold=0
 
@@ -32,7 +17,7 @@ length=len(PrimeFactors_tuple)
 print(PrimeFactors_tuple)
 
 
-def primefactorsdictionary():
+def prime_factors_dictionary():
     a = {} 
     k = 0 
     while k < length: 
@@ -45,7 +30,7 @@ def primefactorsdictionary():
     
     return(a)
 
-a=primefactorsdictionary()
+a=prime_factors_dictionary()
 
 
 def retrieve(listvalues_list):
@@ -61,14 +46,14 @@ def retrieve(listvalues_list):
 
     return (tentative_list)
 
-def addtomultlist(some_list):
+def add_to_multlist(some_list):
 
     zv = retrieve(some_list)
     varue= math.prod(zv)
     list_of_lists.append(varue)
 
 
-def checkifcanmoveforward(somesuch_list):
+def check_if_can_move_forward(somesuch_list):
 
     rength=len(somesuch_list)
     i=rength    
@@ -80,73 +65,51 @@ def checkifcanmoveforward(somesuch_list):
             u=u+1
     return -1 
 
-def listclearcopy(somerlist,somerestlist):
 
-    somerlist.clear()
-    somerlist = somerestlist
-
-    return
-
-
-
-def fun3(n):
-    urntracker=1
-    tracker=0
-    pigsdontfly=0
-    rv=0
-    urn=0
-    original_list=[]
+def for_length_get_combinations(n):
+    initial_positioner=0
+    left_most_index=0
     temp_list = []
-    urn_list = []
-    while (rv<n):
-        temp_list.append(rv)
-        rv+=1
-    original_list = temp_list[:]
-    print(original_list)
-    while(pigsdontfly<10):
-        print(temp_list)
-        addtomultlist(temp_list)
+    while (initial_positioner<n):
+        temp_list.append(initial_positioner)
+        initial_positioner+=1
+    while(True):
+        add_to_multlist(temp_list)
         temp_list[-1] +=1
         if (temp_list[-1]==length):
             temp_list[-1] -=1
-            urn = checkifcanmoveforward(temp_list)
-            if (urn==-1):
+            left_most_index = check_if_can_move_forward(temp_list)
+            if (left_most_index==-1):
                 return
             
-            temp_list[urn] +=1
+            temp_list[left_most_index] +=1
 
-            storageurn=0
+            storage_left_index=0
             uzn=0
-            storageurn = temp_list[urn]
+            storage_left_index = temp_list[left_most_index]
 
-            print(urn)
-
-            urn=urn+1
-            while (urn<n):
+            left_most_index=left_most_index+1
+            while (left_most_index<n):
                 uzn=uzn+1
-                temp_list[urn] = storageurn + uzn
-                urn=urn+1
-
-        pigsdontfly=pigsdontfly+1
+                temp_list[left_most_index] = storage_left_index + uzn
+                left_most_index=left_most_index+1
 
 
-def fun():
+def length_one_at_a_time():
     n=1
     while(n<length):
-        fun3(n)
+        for_length_get_combinations(n)
         n=n+1
     n=1
     return
 
 def factorizer():
-    fun()
+    length_one_at_a_time()
     list_of_lists.append(1)
 
 factorizer()
 
 
-
-print(list_of_lists)
 
 factordone_list = list(set(list_of_lists))
 
