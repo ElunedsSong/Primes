@@ -21,30 +21,27 @@ def prime_factors_dictionary():
     a = {} 
     k = 0 
     while k < length: 
-        # dynamically create key 
         key = k 
-        # calculate value 
         value = PrimeFactors_list[k] 
         a[key] = value  
         k = k +1
     
     return(a)
 
-a=prime_factors_dictionary()
+prime_dictionary=prime_factors_dictionary()
 
 
 def retrieve(listvalues_list):
-
+    
     lengthl=len(listvalues_list)
     tentative_list = []
     ror=0
     value=0
     while(ror<lengthl):
         value=listvalues_list[ror]
-        tentative_list.append(a[value])
+        tentative_list.append(prime_dictionary[value])
         ror+=1
-
-    return (tentative_list)
+    return tentative_list
 
 def add_to_multlist(some_list):
 
@@ -52,16 +49,14 @@ def add_to_multlist(some_list):
     varue= math.prod(zv)
     list_of_lists.append(varue)
 
-
 def check_if_can_move_forward(somesuch_list):
-
     rength=len(somesuch_list)
     i=rength    
     u=1
     if(i>1):
         while(u<i):
             if(somesuch_list[i-u-1]+1!=somesuch_list[i-u]):
-                return (i-u-1)
+                return i-u-1
             u=u+1
     return -1 
 
@@ -100,7 +95,6 @@ def length_one_at_a_time():
     while(n<length):
         for_length_get_combinations(n)
         n=n+1
-    n=1
     return
 
 def factorizer():
