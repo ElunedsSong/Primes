@@ -17,7 +17,7 @@ while(u<100000):
             factorizedsum= factorizedsum + number/i
             factorizedsum= factorizedsum + i
         i=i+2
-    print("T-Factor of",number, "is",factorizedsum, "F-%:",factorizedsum/number)
+    print("Sum of Factors of",number, "is",factorizedsum, "F-%:",factorizedsum/number)
     factorizedsum=1
     i=3
     o=2

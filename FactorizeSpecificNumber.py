@@ -2,14 +2,6 @@ import math
 import sympy
 import numpy
 
-list_of_lists = []
-lengthhold = 0
-PrimeFactors_tuple = (2, 3, 5, 7, 11, 13)
-PrimeFactors_list = list(PrimeFactors_tuple)
-length = len(PrimeFactors_tuple)
-
-print(PrimeFactors_tuple)
-
 
 def prime_factors_dictionary():
     a = {}
@@ -97,15 +89,44 @@ def factorizer():
     list_of_lists.append(1)
 
 
+def prime_factors_of(z):
+    return_list = []
+    p = 2
+    o = 2
+    while (z > 1):
+        while (z % p == 0):
+            z = z/p
+            return_list.append(p)
+            p = 2
+            o = 2
+        if (p == 2):
+            p = p+1
+            o = 0
+        while (sympy.isprime(p+o) != True):
+            o = o+2
+        p = p+o
+        o = 2
+    return (return_list)
+
+
+list_of_lists = []
+
+x = int(input("Enter a number: "))
+PrimeFactors_list = prime_factors_of(x)
+print(PrimeFactors_list)
+length = len(PrimeFactors_list)
 prime_dictionary = prime_factors_dictionary()
 factorizer()
+list_of_lists = list(set(list_of_lists))
+list_of_lists.sort()
+summ = sum(list_of_lists)
 
-factordone_list = list(set(list_of_lists))
+print(list_of_lists)
 
-factordone_list.sort()
+print("For:", x, "T-Factors:", summ,
+      "Away Perfect:", (summ-x), "% Off", (summ/x))
+if (summ-x == 0):
+    "Perfect!!!!!!!!!!!!!!!!!!!!"
 
-print(factordone_list)
-
-total = sum(factordone_list)
-
-print(total)
+list_of_lists.clear()
+PrimeFactors_list.clear()
